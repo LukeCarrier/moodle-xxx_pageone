@@ -9,12 +9,6 @@
 require_once($CFG->dirroot.'/blocks/pageone/block_pageone.php');
 //require_once($CFG->dirroot . '/blocks/pageone/settingslib.php');
 
-/***Are we on a settings page?***/
-if (strpos($_SERVER['REQUEST_URI'], "/admin/settings.php")!==false || strpos($_SERVER['REQUEST_URI'], "/admin/upgradesettings.php")!==false )
- $setpage=true;
-else
- $setpage=false;
-
 /**Account number/username**/
 $settings->add(new admin_setting_configtext('block_pageone_account_num', get_string("config_account_num", "block_pageone"),
                    "", "", PARAM_TEXT));
@@ -65,8 +59,6 @@ $settings->add(new admin_setting_configtext('block_pageone_default_mbox', get_st
 
 /**System default MSISDN**/
 
-if($setpage)
-{
  $msisdn_opts=pageone_get_alphatag_list();
  if ($msisdn_opts)
   $settings->add(new admin_setting_configselect('block_pageone_alpha_tag', get_string('config_alpha_tag', 'block_pageone'),
@@ -74,10 +66,6 @@ if($setpage)
  else
   $settings->add(new admin_setting_configtext('block_pageone_alpha_tag', get_string("config_alpha_tag", "block_pageone"),
    get_string('no_list', 'block_pageone'), "", PARAM_TEXT));
-}
-else
- $settings->add(new admin_setting_configtext('block_pageone_alpha_tag', get_string("config_alpha_tag", "block_pageone"),
-  get_string('no_list', 'block_pageone'), "", PARAM_TEXT));
 
 
 /***Sub classing method to avoid triggering SOAP calls when they are not needed***
@@ -97,9 +85,5 @@ $settings->add(new admin_setting_configtext('block_pageone_char_limit', get_stri
                    get_string("config_char_limit_help", "block_pageone"), 1000, PARAM_INT));
 
 /**Other account info and config**/
-if (pageone_is_configured() && $setpage)
-{
  $settings->add(new admin_setting_heading('pageone_account_info', get_string("account_info", "block_pageone"),
   pageone_get_account_settings_html()));
-}
-?>

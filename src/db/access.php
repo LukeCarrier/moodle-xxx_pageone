@@ -30,23 +30,45 @@
 //
 // For the core capabilities, the variable is $moodle_capabilities.
 
-global $CFG;
-$admin='admin';
-if ($CFG->version >= 2010000000)
- $admin='manager';
-
-$block_pageone_capabilities = array(
-
+$capabilities = array(
     'block/pageone:cansend' => array(
+        'riskbitmask' => RISK_SPAM,
 
-        'captype' => 'write',
+        'captype'      => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'legacy' => array(
-            'teacher' => CAP_ALLOW,
+
+        'archetypes' => array(
+            'teacher'        => CAP_ALLOW,
             'editingteacher' => CAP_ALLOW,
-            $admin => CAP_ALLOW
-        )
+            'manager'        => CAP_ALLOW,
+        ),
+    ),
+
+    'block/pageone:addinstance' => array(
+        'riskbitmask' => RISK_SPAM | RISK_XSS,
+
+        'captype'      => 'write',
+        'contextlevel' => CONTEXT_BLOCK,
+
+        'archetypes' => array(
+            'editingteacher' => CAP_ALLOW,
+            'manager'        => CAP_ALLOW,
+        ),
+
+        'clonepermissionsfrom' => 'moodle/site:manageblocks',
+    ),
+
+    'block/pageone:myaddinstance' => array(
+        'riskbitmask' => RISK_SPAM | RISK_XSS,
+
+        'captype'      => 'write',
+        'contextlevel' => CONTEXT_BLOCK,
+
+        'archetypes' => array(
+            'editingteacher' => CAP_ALLOW,
+            'manager'        => CAP_ALLOW,
+        ),
+
+        'clonepermissionsfrom' => 'moodle/site:manageblocks',
     ),
 );
-
-?>
