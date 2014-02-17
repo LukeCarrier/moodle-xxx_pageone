@@ -38,7 +38,7 @@ function pageone_soap_login()
     else
     {
         $status=$result->getElementsByTagName("status");
-        if ($status->item(0)->nodeValue=="200")
+        if ($status->item(0) && $status->item(0)->nodeValue=="200")
         {
             $iddoc=$result->getElementsByTagName("session-id");
             if (IS_DEBUGGING)
