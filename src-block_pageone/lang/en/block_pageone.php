@@ -9,14 +9,19 @@
 //
 // Moodle is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle. If not, see <http://www.gnu.org/licenses/>.
 
-$plugin->version = 2012042901;
-/***Remember to update version in block_pageone.php as well***/
-$plugin->requires = 2010112400;
-$plugin->release = "Beta Release 3";
-$plugin->maturity = MATURITY_BETA;
+/**
+ * PageOne MoodleMobile block.
+ *
+ * @author Luke Carrier <luke@tdm.co>
+ * @copyright 2014 Luke Carrier, The Development Manager Ltd
+ * @license GPL v3
+ */
+
+// Module metadata
+$string['pluginname'] = 'PageOne: block';
