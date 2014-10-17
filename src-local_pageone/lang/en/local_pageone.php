@@ -34,6 +34,8 @@ $string['config:accountnumber']       = 'Account number';
 $string['config:accountnumberdesc']   = 'The number of your PageOne account';
 $string['config:accountpassword']     = 'Account password';
 $string['config:accountpassworddesc'] = 'The password for your PageOne account';
+$string['config:locale']              = 'Locale';
+$string['config:localedesc']          = 'Locales provide routines for locating mobile phone numbers in user profiles';
 
 // Locales
 $string['locale:unitedkingdom'] = 'United Kingdom';

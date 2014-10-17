@@ -23,24 +23,27 @@
  * @license GPL v3
  */
 
-use local_pageone\locale_manager;
+namespace local_pageone\locales;
+
+use local_pageone\locale_interface;
 use local_pageone\util;
 
-require_once __DIR__ . '/lib.php';
+/**
+ * United Kingdom locale.
+ *
+ */
+class united_kingdom implements locale_interface {
+    /**
+     * @override \local_pageone\locale_interface
+     */
+    public static function get_name() {
+        return util::string('locale:unitedkingdom');
+    }
 
-if ($hassiteconfig) {
-    $page = new admin_settingpage('localplugins_pageone',
-                                  util::string('pageone'));
-    $page->add(new admin_setting_configtext('local_pageone/accountnumber',
-            util::string('config:accountnumber'),
-            util::string('config:accountnumberdesc'), ''));
-    $page->add(new admin_setting_configtext('local_pageone/accountpassword',
-            util::string('config:accountpassword'),
-            util::string('config:accountpassworddesc'), ''));
-
-    $page->add(new admin_setting_configselect('local_pageone/locale',
-            util::string('config:locale'),
-            util::string('config:localedesc'), null, locale_manager::menu()));
-
-    $ADMIN->add('localplugins', $page);
+    /**
+     * @override \local_pageone\locale_interface
+     */
+    public static function get_type() {
+        return 'united_kingdom';
+    }
 }
