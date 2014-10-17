@@ -23,7 +23,10 @@
  * @license GPL v3
  */
 
+use block_pageone\util;
+
 require_once dirname(__DIR__) . '/moodleblock.class.php';
+require_once __DIR__ . '/lib.php';
 
 /**
  * PageOne block class.
@@ -46,7 +49,8 @@ class block_pageone extends block_list {
     /**
      * Get the (possibly cached) block content.
      *
-     * @return stdClass An object with an array of items, an array of icons, and a string for the footer
+     * @return stdClass An object with an array of items, an array of icons, and
+     *                  a string for the footer.
      */
     function get_content() {
         global $CFG, $USER;
@@ -54,8 +58,15 @@ class block_pageone extends block_list {
         if ($this->content === null) {
             $this->content = (object) array(
                 'footer' => '',
-                'icons'  => '',
-                'items'  => '',
+                'icons'  => array(),
+                'items'  => array(
+                    html_writer::link(new moodle_url('/blocks/pageone/compose.php', array('instanceid' => $this->context->instanceid)),
+                                      util::string('compose')),
+                    html_writer::link(new moodle_url('/blocks/pageone/log.php', array('instanceid' => $this->context->instanceid, 'direction' => 'out')),
+                                      util::string('outbox')),
+                    html_writer::link(new moodle_url('/blocks/pageone/log.php', array('instanceid' => $this->context->instanceid, 'direction' => 'in')),
+                                      util::string('inbox')),
+                ),
             );
         }
 
