@@ -16,10 +16,7 @@
 // along with Moodle. If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * PageOne MoodleMobile libraries.
- *
- * The core of the PageOne MoodleMoble functionality; used by the block and
- * message output plugins.
+ * PageOne MoodleMobile block.
  *
  * @author Luke Carrier <luke@tdm.co>
  * @copyright 2014 Luke Carrier, The Development Manager Ltd
