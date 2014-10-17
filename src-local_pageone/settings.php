@@ -34,7 +34,7 @@ if ($hassiteconfig) {
     $page->add(new admin_setting_configtext('local_pageone/accountnumber',
             util::string('config:accountnumber'),
             util::string('config:accountnumberdesc'), ''));
-    $page->add(new admin_setting_configtext('local_pageone/accountpassword',
+    $page->add(new admin_setting_configpasswordunmask('local_pageone/accountpassword',
             util::string('config:accountpassword'),
             util::string('config:accountpassworddesc'), ''));
 
