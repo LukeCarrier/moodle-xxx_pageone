@@ -1,14 +1,22 @@
-Log CPD activities within Moodle
-================================
+Send SMS notifications from within Moodle
+=========================================
 
-Allows Moodle users to log their CPD via their user profiles.
+Extends Moodle to provide several SMS related features:
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LukeCarrier/moodle-local_cpd/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LukeCarrier/moodle-local_cpd/?branch=master)
+* Allows teachers to deliver notifications to students of their courses via a
+  block plugin.
+* [Coming January 2015] Provides a messaging output to allow Moodle
+  notifications to be delivered via SMS.
+
+Note: this plugin requires an active PageOne subscription to function.
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LukeCarrier/moodle-xxx_pageone/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LukeCarrier/moodle-xxx_pageone/?branch=master)
 
 License
 -------
 
-    Copyright (c) The Development Manager Ltd
+    Copyright (c) The Development Manager Ltd.
+    Portions copyright (c) Tim Williams, Auto Train Ltd.
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -36,12 +44,21 @@ Building
 2. Execute ````make```` to generate zip files containing the plugins
 3. Upload archives to the ````moodle.org```` plugins site
 
-Understand locales
-------------------
+Understanding locales
+---------------------
 
-* Moodle 'Mobile Phone' user parameter: The reccomended option if your user database is consistent and the mobile phone number is never placed in the other field. (Note this was refered to as 'Phone 2' in some older versions of Moodle).
-* Moodle 'Phone' user parameter: Uses the number in the 'Phone' user parameter field. (Note this was refered to as 'Phone 1' in some older versions of Moodle)
-* First valid phone number: This will check both the 'Phone' and 'Mobile Phone' fields. If 'Phone' contains a valid number, then this will be used. If not, the content of 'Mobile phone' will be used.
-* Second valid phone number: This will check both the 'Mobile Phone' and 'Phone' fields. If 'Mobile Phone' contains a valid number, then this will be used. If not, the content of 'Phone' will be used.
-* Automatically identify UK mobile phone number: This method checks all phone numbers stored in the users profile to see if they start with the normal UK mobile phone number prefix, 07.
-* Mobile phone number prefixed with letter m: Use this option if the mobile phone number is stored prefixed with an m (eg m07123 456789) in either phone number field 
+Locales provide different routines for locating mobile phone numbers within user
+profiles. There are four included with the current release:
+
+* *Moodle "Mobile Phone" user profile field*
+  Recommended if your database is consistent the mobile number is always within
+  this field (referred to as "Phone 1" in earlier Moodle releases).
+* *Moodle "Phone" user profile field*
+  Uses the number in the 'Phone' user parameter field (referred to as "Phone 1"
+  in earlier Moodle releases).
+* *First valid phone number*
+  Checks both the "Phone" and "Mobile Phone", using the first number identified
+  as valid.
+* *First valid phone number prefixed with letter "m"*
+  Checks both the "Phone" and "Mobile Phone", using the first number identified
+  as starting with the letter "m".
