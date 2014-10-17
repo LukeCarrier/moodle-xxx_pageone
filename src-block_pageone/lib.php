@@ -38,7 +38,7 @@ function block_pageone_class_autoload($classname) {
     $namespacelength = strlen($namespace);
 
     if (substr($classname, 0, $namespacelength) === $namespace) {
-        $filename = __DIR__ . '/classes/' . substr($classname, 10) . '.php';
+        $filename = __DIR__ . '/classes/' . str_replace('\\', '/', substr($classname, $namespacelength)) . '.php';
 
         extract($GLOBALS);
         include $filename;
