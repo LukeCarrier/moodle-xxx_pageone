@@ -50,7 +50,7 @@ class block_pageone extends block_list {
      * Get the (possibly cached) block content.
      *
      * @return stdClass An object with an array of items, an array of icons, and a string for the footer
-     **/
+     */
     function get_content() {
         global $CFG, $USER;
 
