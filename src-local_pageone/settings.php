@@ -31,6 +31,7 @@ require_once __DIR__ . '/lib.php';
 if ($hassiteconfig) {
     $page = new admin_settingpage('localplugins_pageone',
                                   util::string('pageone'));
+
     $page->add(new admin_setting_configtext('local_pageone/accountnumber',
             util::string('config:accountnumber'),
             util::string('config:accountnumberdesc'), ''));
