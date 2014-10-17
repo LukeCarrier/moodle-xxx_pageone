@@ -29,5 +29,9 @@ $plugin->component = 'block_pageone';
 $plugin->version  = 2014101600;
 $plugin->requires = 2012120300; // Moodle 2.4
 
+$plugin->dependencies = array(
+    'local_pageone' => 2014101600,
+);
+
 $plugin->release  = '0.1.0';
 $plugin->maturity = MATURITY_ALPHA;
