@@ -23,22 +23,35 @@
  * @license GPL v3
  */
 
-// Module metadata
-$string['pluginname'] = 'PageOne: block';
+namespace block_pageone\forms;
 
-// Block
-$string['compose'] = 'Compose';
-$string['inbox']   = 'Inbox';
-$string['outbox']  = 'Outbox';
+use block_pageone\util;
+use moodleform;
 
-// Log page
-$string['applyfilters']   = 'Apply filters';
-$string['course']         = 'Posted in';
-$string['course:all']     = 'All courses';
-$string['course:current'] = 'The currently selected course';
-$string['user']           = 'Show';
-$string['user:all']       = 'Messages sent by all users';
-$string['user:current']   = 'Messages I\'ve sent';
+require_once "{$CFG->libdir}/formslib.php";
 
-// Exceptions
-$string['invalidlogdirection'] = 'Invalid log direction "{$a}"';
+/**
+ * Filter form.
+ *
+ * From which sources should we obtain messaging data?
+ */
+class log_filter_form extends moodleform {
+    /**
+     * @override moodleform
+     */
+    public function definition() {
+        $mform = $this->_form;
+
+        $mform->addElement('select', 'user', util::string('user'), array(
+            'current' => util::string('user:current'),
+            'all'     => util::string('user:all'),
+        ));
+
+        $mform->addElement('select', 'course', util::string('course'), array(
+            'current' => util::string('course:current'),
+            'all'     => util::string('course:all'),
+        ));
+
+        $this->add_action_buttons(false, util::string('applyfilters'));
+    }
+}

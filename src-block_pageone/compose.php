@@ -23,22 +23,24 @@
  * @license GPL v3
  */
 
-// Module metadata
-$string['pluginname'] = 'PageOne: block';
+use block_pageone\util;
 
-// Block
-$string['compose'] = 'Compose';
-$string['inbox']   = 'Inbox';
-$string['outbox']  = 'Outbox';
+require_once dirname(dirname(__DIR__)) . '/config.php';
+require_once __DIR__ . '/lib.php';
 
-// Log page
-$string['applyfilters']   = 'Apply filters';
-$string['course']         = 'Posted in';
-$string['course:all']     = 'All courses';
-$string['course:current'] = 'The currently selected course';
-$string['user']           = 'Show';
-$string['user:all']       = 'Messages sent by all users';
-$string['user:current']   = 'Messages I\'ve sent';
+$instanceid = required_param('instanceid', PARAM_INT);
 
-// Exceptions
-$string['invalidlogdirection'] = 'Invalid log direction "{$a}"';
+$context = context_block::instance($instanceid);
+$heading = util::string('compose');
+
+$PAGE->set_context($context);
+$PAGE->set_heading($heading);
+$PAGE->set_title($heading);
+$PAGE->set_url(util::compose_url($instanceid));
+
+$renderer = $PAGE->get_renderer('block_pageone');
+
+echo $OUTPUT->header(),
+     $OUTPUT->heading($heading),
+     $renderer->navigation_tabs($instanceid, block_pageone_renderer::TAB_COMPOSE),
+     $OUTPUT->footer();

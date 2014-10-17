@@ -23,6 +23,8 @@
  * @license GPL v3
  */
 
+require_once dirname(dirname(__DIR__)) . '/local/pageone/lib.php';
+
 /**
  * Autoload a class.
  *

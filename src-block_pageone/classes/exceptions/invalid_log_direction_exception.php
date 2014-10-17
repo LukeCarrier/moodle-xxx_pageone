@@ -23,22 +23,23 @@
  * @license GPL v3
  */
 
-// Module metadata
-$string['pluginname'] = 'PageOne: block';
+namespace block_pageone\exceptions;
 
-// Block
-$string['compose'] = 'Compose';
-$string['inbox']   = 'Inbox';
-$string['outbox']  = 'Outbox';
+use moodle_exception;
 
-// Log page
-$string['applyfilters']   = 'Apply filters';
-$string['course']         = 'Posted in';
-$string['course:all']     = 'All courses';
-$string['course:current'] = 'The currently selected course';
-$string['user']           = 'Show';
-$string['user:all']       = 'Messages sent by all users';
-$string['user:current']   = 'Messages I\'ve sent';
-
-// Exceptions
-$string['invalidlogdirection'] = 'Invalid log direction "{$a}"';
+/**
+ * Invalidd log direction.
+ *
+ * Thrown when the supplied direction is neither in nor out.
+ */
+class invalid_log_direction_exception extends moodle_exception {
+    /**
+     * @override \moodle_exception
+     *
+     * @param string $direction The supplied direction.
+     */
+    public function __construct($direction) {
+        parent::__construct('invalidlogdirection', 'block_pageone', null,
+                            $direction);
+    }
+}
