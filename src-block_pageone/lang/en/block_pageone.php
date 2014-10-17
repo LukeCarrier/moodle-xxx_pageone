@@ -25,3 +25,8 @@
 
 // Module metadata
 $string['pluginname'] = 'PageOne: block';
+
+// Block
+$string['compose'] = 'Compose';
+$string['inbox']   = 'Inbox';
+$string['outbox']  = 'Outbox';

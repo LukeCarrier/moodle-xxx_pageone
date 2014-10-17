@@ -60,11 +60,11 @@ class block_pageone extends block_list {
                 'footer' => '',
                 'icons'  => array(),
                 'items'  => array(
-                    html_writer::link(new moodle_url('/blocks/pageone/compose.php', array('instanceid' => $this->context->instanceid)),
+                    html_writer::link(util::compose_url($this->context->instanceid),
                                       util::string('compose')),
-                    html_writer::link(new moodle_url('/blocks/pageone/log.php', array('instanceid' => $this->context->instanceid, 'direction' => 'out')),
+                    html_writer::link(util::outbox_url($this->context->instanceid),
                                       util::string('outbox')),
-                    html_writer::link(new moodle_url('/blocks/pageone/log.php', array('instanceid' => $this->context->instanceid, 'direction' => 'in')),
+                    html_writer::link(util::inbox_url($this->context->instanceid),
                                       util::string('inbox')),
                 ),
             );
