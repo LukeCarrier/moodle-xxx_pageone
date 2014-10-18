@@ -37,6 +37,26 @@ class util extends local_util {
     const MOODLE_MODULE = 'block_pageone';
 
     /**
+     * Get options for attachments form field.
+     *
+     * @param \stdClass $course The course's DML record.
+     *
+     * @return mixed[] Attachments field options.
+     */
+    public static function attachments_options($course) {
+        return array(
+            'subdirs'        => 0,
+            'maxbytes'       => $course->maxbytes,
+            'maxfiles'       => 3,
+            'accepted_types' => array(
+                'audio',
+                'document',
+                'video',
+            ),
+        );
+    }
+
+    /**
      * Get compose URL.
      *
      * @param integer $instanceid The ID of the block instance.
@@ -47,6 +67,17 @@ class util extends local_util {
         return new moodle_url('/blocks/pageone/compose.php', array(
             'instanceid' => $instanceid,
         ));
+    }
+
+    /**
+     * Get enrolled users for a course.
+     *
+     * @param \context $context The course context (or a child thereof).
+     *
+     * @return string[] An ID-indexed array of usernames.
+     */
+    public static function enrolled_users($context) {
+        return array_map('fullname', get_enrolled_users($context));
     }
 
     /**

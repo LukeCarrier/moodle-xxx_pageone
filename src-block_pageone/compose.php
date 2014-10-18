@@ -23,6 +23,7 @@
  * @license GPL v3
  */
 
+use block_pageone\forms\compose_form;
 use block_pageone\util;
 
 require_once dirname(dirname(__DIR__)) . '/config.php';
@@ -30,8 +31,11 @@ require_once __DIR__ . '/lib.php';
 
 $instanceid = required_param('instanceid', PARAM_INT);
 
-$context = context_block::instance($instanceid);
-$heading = util::string('compose');
+$context  = context_block::instance($instanceid);
+$course   = $DB->get_record('course', array(
+    'id' => $context->get_parent_context()->instanceid,
+));
+$heading  = util::string('compose');
 
 $PAGE->set_context($context);
 $PAGE->set_heading($heading);
@@ -40,7 +44,13 @@ $PAGE->set_url(util::compose_url($instanceid));
 
 $renderer = $PAGE->get_renderer('block_pageone');
 
+$composeform = new compose_form(null, array(
+    'course'         => $course,
+    'enrolled_users' => util::enrolled_users($context),
+));
+
 echo $OUTPUT->header(),
      $OUTPUT->heading($heading),
-     $renderer->navigation_tabs($instanceid, block_pageone_renderer::TAB_COMPOSE),
-     $OUTPUT->footer();
+     $renderer->navigation_tabs($instanceid, block_pageone_renderer::TAB_COMPOSE);
+$composeform->display();
+echo $OUTPUT->footer();

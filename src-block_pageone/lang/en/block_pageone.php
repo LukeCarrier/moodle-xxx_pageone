@@ -31,6 +31,20 @@ $string['compose'] = 'Compose';
 $string['inbox']   = 'Inbox';
 $string['outbox']  = 'Outbox';
 
+// Compose page
+$string['emailattachments']       = 'Email attachments';
+$string['emailformat']            = 'Email format';
+$string['emailformat:html']       = 'HTML';
+$string['emailformat:text']       = 'Text';
+$string['includesendernameinsms'] = 'Include sender name in SMS';
+$string['message']                = 'Message';
+$string['recipients']             = 'Recipients';
+$string['send']                   = 'Send message';
+$string['sendemail']              = 'Send email?';
+$string['sendsms']                = 'Send SMS?';
+$string['smscharacterlimit']      = 'SMS character limit';
+$string['subject']                = 'Subject';
+
 // Log page
 $string['applyfilters']   = 'Apply filters';
 $string['course']         = 'Posted in';
