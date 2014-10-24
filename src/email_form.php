@@ -115,6 +115,7 @@
 
             // Subject
             $mform->addElement('text', 'subject', get_string('subject', 'forum'), pageone_subject_params());
+            $mform->setType('subject', PARAM_NOTAGS);
             $mform->addRule('subject', null, 'required');
             
             // Message
@@ -136,17 +137,24 @@
             
             // Attachment
             pageone_add_file_upload($mform, $this);
+
             // Hidden stuff
             $mform->addElement('hidden', 'courseid', $this->courseid);
+            $mform->setType('courseid', PARAM_INT);
             $mform->addElement('hidden', 'instanceid');
+            $mform->setType('instanceid', PARAM_INT);
             $mform->addElement('hidden', 'groupmode');
+            $mform->setType('groupmode', PARAM_INT);
             $mform->addElement('hidden', 'cbmode', $this->cbmode);
+            $mform->setType('cbmode', PARAM_INT);
             $mform->addElement('hidden', 'to', $this->to);
+            $mform->setType('to', PARAM_INT);
             $mform->addElement('hidden', 'action', $this->action);
+            $mform->setType('action', PARAM_ALPHA);
             $mform->addElement('hidden', 'emailid', $this->emailid);
+            $mform->setType('emailid', PARAM_INT);
 
             // Submit
             $this->add_action_buttons(true, get_string('sendemail', 'block_pageone'));
         }
     }
-?>

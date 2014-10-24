@@ -37,7 +37,7 @@ $mtype=array(
  );
 
 $mtype_message=get_string('config_mtype_help', 'block_pageone');
-if ($CFG->messaging==true)
+if (isset($CFG->messaging) && $CFG->messaging==true)
  $mtype[MTYPE_MM]=get_string('config_mtype_'.MTYPE_MM, 'block_pageone');
 else
  $mtype_message=get_string('config_mtype_help', 'block_pageone')." ".get_string('mm_disabled', 'block_pageone');
