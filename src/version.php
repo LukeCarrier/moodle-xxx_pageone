@@ -15,8 +15,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-$plugin->version = 2012042901;
+$plugin->version = 2014102900;
 /***Remember to update version in block_pageone.php as well***/
-$plugin->requires = 2010112400;
-$plugin->release = "Beta Release 3";
+$plugin->requires = 2012120300;
+$plugin->release = 'Temporarary 2.4 compat';
 $plugin->maturity = MATURITY_BETA;
